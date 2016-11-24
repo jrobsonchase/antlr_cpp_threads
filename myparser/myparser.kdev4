@@ -1,0 +1,4 @@
+[Project]
+CreatedFrom=myparser
+Manager=KDevCMakeManager
+Name=myparser
