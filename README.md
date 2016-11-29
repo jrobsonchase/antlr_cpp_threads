@@ -20,3 +20,12 @@ Includes:
 
 - Uncomment the mutex lock on line 26 of `antlr-rust/src/lib.rs`. Repeat step 2.
   Watch as it passes every time.
+
+#### Update
+
+Added a c++ version of the code showing the issue. The `build_cpp.sh` script
+will place a `run_parser` executable in the build directory. Run this with a
+path to `MyGrammar.g4` as the argument. It can be found in `myparser/grammar`.
+
+The same with/without mutex test can be performed - simply uncomment lines 20
+and 22 of `myparser/src/bin/main.cpp`.
