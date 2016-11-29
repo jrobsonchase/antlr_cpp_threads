@@ -184,6 +184,9 @@ if(BUILD_BINARY)
         target_link_libraries(${target} myparser)
         target_link_libraries(${target} ${antlr4-BASE_DIR}/dist/libantlr4-runtime.a)
     endforeach( target run_parser )
+    
+    find_package(Threads)
+    target_link_libraries(run_parser ${CMAKE_THREAD_LIBS_INIT})
 endif()
 
 #add_precompiled_header(myparser ${PROJECT_SOURCE_DIR}/runtime/src/antlrcpp-Prefix.h)
