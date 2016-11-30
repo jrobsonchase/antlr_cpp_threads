@@ -108,7 +108,7 @@ namespace atn {
     SimState _prevAccept;
 
   public:
-    static int match_calls;
+    static thread_local int match_calls;
 
     LexerATNSimulator(const ATN &atn, std::vector<dfa::DFA> &decisionToDFA, PredictionContextCache &sharedContextCache);
     LexerATNSimulator(Lexer *recog, const ATN &atn, std::vector<dfa::DFA> &decisionToDFA, PredictionContextCache &sharedContextCache);

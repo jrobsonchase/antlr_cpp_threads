@@ -49,14 +49,14 @@ const atn::ATN& MyGrammarLexer::getATN() const {
 
 
 // Static vars and initialization.
-std::vector<dfa::DFA> MyGrammarLexer::_decisionToDFA;
-atn::PredictionContextCache MyGrammarLexer::_sharedContextCache;
+thread_local std::vector<dfa::DFA> MyGrammarLexer::_decisionToDFA;
+thread_local atn::PredictionContextCache MyGrammarLexer::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN MyGrammarLexer::_atn;
-std::vector<uint16_t> MyGrammarLexer::_serializedATN;
+thread_local atn::ATN MyGrammarLexer::_atn;
+thread_local std::vector<uint16_t> MyGrammarLexer::_serializedATN;
 
-std::vector<std::string> MyGrammarLexer::_ruleNames = {
+thread_local std::vector<std::string> MyGrammarLexer::_ruleNames = {
   "COMMENT", "COMMENT_BLOCK", "WHITESPACE", "F_LBRACK", "F_RBRACK", "F_QUOTE", 
   "F_BSLASH", "F_ESC_QUOTE", "LOWER", "UPPER", "UNDERSCORE", "LETTER", "DIGIT", 
   "SPECIAL", "CHAR", "FRAGMENT", "GRAMMAR", "CHANNEL", "SKIP_TOK", "ESC_HYPHEN", 
@@ -65,17 +65,17 @@ std::vector<std::string> MyGrammarLexer::_ruleNames = {
   "POUND", "DOT", "TOKEN_IDENT", "RULE_IDENT", "STRING", "SET_TOK"
 };
 
-std::vector<std::string> MyGrammarLexer::_modeNames = {
+thread_local std::vector<std::string> MyGrammarLexer::_modeNames = {
   "DEFAULT_MODE"
 };
 
-std::vector<std::string> MyGrammarLexer::_literalNames = {
+thread_local std::vector<std::string> MyGrammarLexer::_literalNames = {
   "", "", "", "", "'fragment'", "'grammar'", "'channel'", "'skip'", "'\\-'", 
   "'\\''", "'->'", "'~'", "':'", "';'", "'('", "')'", "'['", "']'", "'{'", 
   "'}'", "'*'", "'+'", "'?'", "'|'", "'-'", "'#'", "'.'"
 };
 
-std::vector<std::string> MyGrammarLexer::_symbolicNames = {
+thread_local std::vector<std::string> MyGrammarLexer::_symbolicNames = {
   "", "COMMENT", "COMMENT_BLOCK", "WHITESPACE", "FRAGMENT", "GRAMMAR", "CHANNEL", 
   "SKIP_TOK", "ESC_HYPHEN", "ESC_QUOTE", "ARROW", "TILDE", "COLON", "SEMI", 
   "LPAREN", "RPAREN", "LBRACK", "RBRACK", "LBRACE", "RBRACE", "STAR", "PLUS", 
@@ -83,9 +83,9 @@ std::vector<std::string> MyGrammarLexer::_symbolicNames = {
   "STRING", "SET_TOK"
 };
 
-dfa::Vocabulary MyGrammarLexer::_vocabulary(_literalNames, _symbolicNames);
+thread_local dfa::Vocabulary MyGrammarLexer::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> MyGrammarLexer::_tokenNames;
+thread_local std::vector<std::string> MyGrammarLexer::_tokenNames;
 
 MyGrammarLexer::Initializer::Initializer() {
   // This code could be in a static initializer lambda, but VS doesn't allow access to private class members from there. 
@@ -283,4 +283,4 @@ MyGrammarLexer::Initializer::Initializer() {
   }
 }
 
-MyGrammarLexer::Initializer MyGrammarLexer::_init;
+thread_local MyGrammarLexer::Initializer MyGrammarLexer::_init;

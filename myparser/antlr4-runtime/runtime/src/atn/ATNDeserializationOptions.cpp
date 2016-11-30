@@ -33,7 +33,7 @@
 
 using namespace antlr4::atn;
 
-ATNDeserializationOptions ATNDeserializationOptions::defaultOptions;
+thread_local ATNDeserializationOptions ATNDeserializationOptions::defaultOptions;
 
 ATNDeserializationOptions::ATNDeserializationOptions() {
   InitializeInstanceFields();

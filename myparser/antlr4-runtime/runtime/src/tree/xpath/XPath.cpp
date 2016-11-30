@@ -146,7 +146,7 @@ XPathElement XPath::getXPathElement(Token *wordToken, bool anywhere) {
   }
 }
 
-static ParserRuleContext dummyRoot;
+static thread_local ParserRuleContext dummyRoot;
 
 std::vector<ParseTree *> XPath::evaluate(ParseTree *t) {
   dummyRoot.children = { t }; // don't set t's parent.

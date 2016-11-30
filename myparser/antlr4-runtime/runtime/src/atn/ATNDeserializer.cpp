@@ -110,7 +110,7 @@ Guid ATNDeserializer::BASE_SERIALIZED_UUID() {
 }
 
 std::vector<Guid>& ATNDeserializer::SUPPORTED_UUIDS() {
-  static std::vector<Guid> singleton = { BASE_SERIALIZED_UUID(), ADDED_PRECEDENCE_TRANSITIONS(), ADDED_LEXER_ACTIONS() };
+  static thread_local std::vector<Guid> singleton = { BASE_SERIALIZED_UUID(), ADDED_PRECEDENCE_TRANSITIONS(), ADDED_LEXER_ACTIONS() };
   return singleton;
 }
 

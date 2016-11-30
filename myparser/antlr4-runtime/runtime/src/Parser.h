@@ -60,7 +60,7 @@ namespace antlr4 {
 
     class TrimToSizeListener : public tree::ParseTreeListener {
     public:
-      static TrimToSizeListener INSTANCE;
+      static thread_local TrimToSizeListener INSTANCE;
 
       virtual ~TrimToSizeListener() {};
 
@@ -453,7 +453,7 @@ namespace antlr4 {
     /// bypass alternatives.
     ///
     /// <seealso cref= ATNDeserializationOptions#isGenerateRuleBypassTransitions() </seealso>
-    static SyncMap<std::vector<uint16_t>, atn::ATN> bypassAltsAtnCache;
+    static thread_local SyncMap<std::vector<uint16_t>, atn::ATN> bypassAltsAtnCache;
 
     /// When setTrace(true) is called, a reference to the
     /// TraceListener is stored here so it can be easily removed in a

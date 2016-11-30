@@ -38,17 +38,17 @@ public:
 
 
 private:
-  static std::vector<dfa::DFA> _decisionToDFA;
-  static atn::PredictionContextCache _sharedContextCache;
-  static std::vector<std::string> _ruleNames;
-  static std::vector<std::string> _tokenNames;
-  static std::vector<std::string> _modeNames;
+  static thread_local std::vector<dfa::DFA> _decisionToDFA;
+  static thread_local atn::PredictionContextCache _sharedContextCache;
+  static thread_local std::vector<std::string> _ruleNames;
+  static thread_local std::vector<std::string> _tokenNames;
+  static thread_local std::vector<std::string> _modeNames;
 
-  static std::vector<std::string> _literalNames;
-  static std::vector<std::string> _symbolicNames;
-  static dfa::Vocabulary _vocabulary;
-  static atn::ATN _atn;
-  static std::vector<uint16_t> _serializedATN;
+  static thread_local std::vector<std::string> _literalNames;
+  static thread_local std::vector<std::string> _symbolicNames;
+  static thread_local dfa::Vocabulary _vocabulary;
+  static thread_local atn::ATN _atn;
+  static thread_local std::vector<uint16_t> _serializedATN;
 
 
   // Individual action functions triggered by action() above.
@@ -58,7 +58,7 @@ private:
   struct Initializer {
     Initializer();
   };
-  static Initializer _init;
+  static thread_local Initializer _init;
 };
 
 }  // namespace myparser

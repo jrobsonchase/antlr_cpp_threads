@@ -39,7 +39,7 @@
 using namespace antlr4::tree;
 using namespace antlrcpp;
 
-ParseTreeWalker ParseTreeWalker::DEFAULT;
+thread_local ParseTreeWalker ParseTreeWalker::DEFAULT;
 
 void ParseTreeWalker::walk(ParseTreeListener *listener, ParseTree *t) const {
   if (is<ErrorNode *>(t)) {

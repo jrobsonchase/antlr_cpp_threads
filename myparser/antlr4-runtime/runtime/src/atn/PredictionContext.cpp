@@ -46,7 +46,7 @@ using namespace antlr4::atn;
 
 using namespace antlrcpp;
 
-size_t PredictionContext::globalNodeCount = 0;
+thread_local size_t PredictionContext::globalNodeCount = 0;
 const Ref<PredictionContext> PredictionContext::EMPTY = std::make_shared<EmptyPredictionContext>();
 
 PredictionContext::PredictionContext(size_t cachedHashCode) : id(globalNodeCount++), cachedHashCode(cachedHashCode)  {

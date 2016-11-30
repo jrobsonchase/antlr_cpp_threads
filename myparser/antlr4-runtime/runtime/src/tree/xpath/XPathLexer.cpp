@@ -70,34 +70,34 @@ void XPathLexer::IDAction(RuleContext * /*context*/, size_t actionIndex) {
 
 
 // Static vars and initialization.
-std::vector<dfa::DFA> XPathLexer::_decisionToDFA;
-atn::PredictionContextCache XPathLexer::_sharedContextCache;
+thread_local std::vector<dfa::DFA> XPathLexer::_decisionToDFA;
+thread_local atn::PredictionContextCache XPathLexer::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN XPathLexer::_atn;
-std::vector<uint16_t> XPathLexer::_serializedATN;
+thread_local atn::ATN XPathLexer::_atn;
+thread_local std::vector<uint16_t> XPathLexer::_serializedATN;
 
-std::vector<std::string> XPathLexer::_ruleNames = {
+thread_local std::vector<std::string> XPathLexer::_ruleNames = {
   "ANYWHERE", "ROOT", "WILDCARD", "BANG", "ID", "NameChar", "NameStartChar", 
   "STRING"
 };
 
-std::vector<std::string> XPathLexer::_modeNames = {
+thread_local std::vector<std::string> XPathLexer::_modeNames = {
   "DEFAULT_MODE"
 };
 
-std::vector<std::string> XPathLexer::_literalNames = {
+thread_local std::vector<std::string> XPathLexer::_literalNames = {
   "", "", "", "'//'", "'/'", "'*'", "'!'"
 };
 
-std::vector<std::string> XPathLexer::_symbolicNames = {
+thread_local std::vector<std::string> XPathLexer::_symbolicNames = {
   "", "TOKEN_REF", "RULE_REF", "ANYWHERE", "ROOT", "WILDCARD", "BANG", "ID", 
   "STRING"
 };
 
-dfa::Vocabulary XPathLexer::_vocabulary(_literalNames, _symbolicNames);
+thread_local dfa::Vocabulary XPathLexer::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> XPathLexer::_tokenNames;
+thread_local std::vector<std::string> XPathLexer::_tokenNames;
 
 XPathLexer::Initializer::Initializer() {
   // This code could be in a static initializer lambda, but VS doesn't allow access to private class members from there. 
@@ -163,4 +163,4 @@ XPathLexer::Initializer::Initializer() {
   }
 }
 
-XPathLexer::Initializer XPathLexer::_init;
+thread_local XPathLexer::Initializer XPathLexer::_init;

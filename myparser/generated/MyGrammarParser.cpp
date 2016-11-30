@@ -1423,26 +1423,26 @@ bool MyGrammarParser::rule_itemSempred(Rule_itemContext *_localctx, size_t predi
 }
 
 // Static vars and initialization.
-std::vector<dfa::DFA> MyGrammarParser::_decisionToDFA;
-atn::PredictionContextCache MyGrammarParser::_sharedContextCache;
+thread_local std::vector<dfa::DFA> MyGrammarParser::_decisionToDFA;
+thread_local atn::PredictionContextCache MyGrammarParser::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN MyGrammarParser::_atn;
-std::vector<uint16_t> MyGrammarParser::_serializedATN;
+thread_local atn::ATN MyGrammarParser::_atn;
+thread_local std::vector<uint16_t> MyGrammarParser::_serializedATN;
 
-std::vector<std::string> MyGrammarParser::_ruleNames = {
+thread_local std::vector<std::string> MyGrammarParser::_ruleNames = {
   "rule_binding", "redirect", "rule_def", "rule_alt", "empty_alt", "nonempty_alt", 
   "ident", "rule_item", "alt_label", "header", "root", "empty_rule", "comment", 
   "comment_block"
 };
 
-std::vector<std::string> MyGrammarParser::_literalNames = {
+thread_local std::vector<std::string> MyGrammarParser::_literalNames = {
   "", "", "", "", "'fragment'", "'grammar'", "'channel'", "'skip'", "'\\-'", 
   "'\\''", "'->'", "'~'", "':'", "';'", "'('", "')'", "'['", "']'", "'{'", 
   "'}'", "'*'", "'+'", "'?'", "'|'", "'-'", "'#'", "'.'"
 };
 
-std::vector<std::string> MyGrammarParser::_symbolicNames = {
+thread_local std::vector<std::string> MyGrammarParser::_symbolicNames = {
   "", "COMMENT", "COMMENT_BLOCK", "WHITESPACE", "FRAGMENT", "GRAMMAR", "CHANNEL", 
   "SKIP_TOK", "ESC_HYPHEN", "ESC_QUOTE", "ARROW", "TILDE", "COLON", "SEMI", 
   "LPAREN", "RPAREN", "LBRACK", "RBRACK", "LBRACE", "RBRACE", "STAR", "PLUS", 
@@ -1450,9 +1450,9 @@ std::vector<std::string> MyGrammarParser::_symbolicNames = {
   "STRING", "SET_TOK"
 };
 
-dfa::Vocabulary MyGrammarParser::_vocabulary(_literalNames, _symbolicNames);
+thread_local dfa::Vocabulary MyGrammarParser::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> MyGrammarParser::_tokenNames;
+thread_local std::vector<std::string> MyGrammarParser::_tokenNames;
 
 MyGrammarParser::Initializer::Initializer() {
 	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
@@ -1563,4 +1563,4 @@ MyGrammarParser::Initializer::Initializer() {
   }
 }
 
-MyGrammarParser::Initializer MyGrammarParser::_init;
+thread_local MyGrammarParser::Initializer MyGrammarParser::_init;

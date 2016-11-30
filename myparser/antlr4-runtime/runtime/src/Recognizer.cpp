@@ -45,8 +45,8 @@
 using namespace antlr4;
 using namespace antlr4::atn;
 
-std::map<const dfa::Vocabulary*, std::map<std::string, size_t>> Recognizer::_tokenTypeMapCache;
-std::map<std::vector<std::string>, std::map<std::string, size_t>> Recognizer::_ruleIndexMapCache;
+thread_local std::map<const dfa::Vocabulary*, std::map<std::string, size_t>> Recognizer::_tokenTypeMapCache;
+thread_local std::map<std::vector<std::string>, std::map<std::string, size_t>> Recognizer::_ruleIndexMapCache;
 
 Recognizer::Recognizer() {
   InitializeInstanceFields();
@@ -54,7 +54,7 @@ Recognizer::Recognizer() {
 }
 
 dfa::Vocabulary const& Recognizer::getVocabulary() const {
-  static dfa::Vocabulary vocabulary = dfa::Vocabulary::fromTokenNames(getTokenNames());
+  static thread_local dfa::Vocabulary vocabulary = dfa::Vocabulary::fromTokenNames(getTokenNames());
   return vocabulary;
 }
 

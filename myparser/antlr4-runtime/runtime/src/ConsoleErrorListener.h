@@ -40,7 +40,7 @@ namespace antlr4 {
     /**
      * Provides a default instance of {@link ConsoleErrorListener}.
      */
-    static ConsoleErrorListener INSTANCE;
+    static thread_local ConsoleErrorListener INSTANCE;
 
     /**
      * {@inheritDoc}

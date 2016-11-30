@@ -69,7 +69,7 @@ void LexerATNSimulator::SimState::InitializeInstanceFields() {
   charPos = INVALID_INDEX;
 }
 
-int LexerATNSimulator::match_calls = 0;
+thread_local int LexerATNSimulator::match_calls = 0;
 
 
 LexerATNSimulator::LexerATNSimulator(const ATN &atn, std::vector<dfa::DFA> &decisionToDFA,

@@ -43,7 +43,7 @@ using namespace antlr4::tree;
 
 using namespace antlrcpp;
 
-ParserRuleContext ParserRuleContext::EMPTY;
+thread_local ParserRuleContext ParserRuleContext::EMPTY;
 
 ParserRuleContext::ParserRuleContext()
   : start(nullptr), stop(nullptr) {

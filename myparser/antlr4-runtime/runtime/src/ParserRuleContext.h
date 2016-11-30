@@ -61,7 +61,7 @@ namespace antlr4 {
   /// </summary>
   class ANTLR4CPP_PUBLIC ParserRuleContext : public RuleContext {
   public:
-    static ParserRuleContext EMPTY;
+    static thread_local ParserRuleContext EMPTY;
 
     /// <summary>
     /// For debugging/tracing purposes, we want to track all of the nodes in

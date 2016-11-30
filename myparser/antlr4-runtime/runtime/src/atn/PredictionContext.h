@@ -64,7 +64,7 @@ namespace atn {
     std::recursive_mutex _mutex;
 
   public:
-    static size_t globalNodeCount;
+    static thread_local size_t globalNodeCount;
     const size_t id;
 
     /// <summary>

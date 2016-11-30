@@ -33,7 +33,7 @@
 
 using namespace antlr4;
 
-ConsoleErrorListener ConsoleErrorListener::INSTANCE;
+thread_local ConsoleErrorListener ConsoleErrorListener::INSTANCE;
 
 void ConsoleErrorListener::syntaxError(IRecognizer * /*recognizer*/, Token * /*offendingSymbol*/,
   size_t line, size_t charPositionInLine, const std::string &msg, std::exception_ptr /*e*/)  {

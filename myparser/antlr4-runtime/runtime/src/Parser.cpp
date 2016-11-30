@@ -56,7 +56,7 @@ using namespace antlr4::atn;
 
 using namespace antlrcpp;
 
-SyncMap<std::vector<uint16_t>, atn::ATN> Parser::bypassAltsAtnCache;
+thread_local SyncMap<std::vector<uint16_t>, atn::ATN> Parser::bypassAltsAtnCache;
 
 Parser::TraceListener::TraceListener(Parser *outerInstance) : outerInstance(outerInstance) {
 }
@@ -79,7 +79,7 @@ void Parser::TraceListener::exitEveryRule(ParserRuleContext *ctx) {
     << ", LT(1)=" << outerInstance->_input->LT(1)->getText() << std::endl;
 }
 
-Parser::TrimToSizeListener Parser::TrimToSizeListener::INSTANCE;
+thread_local Parser::TrimToSizeListener Parser::TrimToSizeListener::INSTANCE;
 
 void Parser::TrimToSizeListener::enterEveryRule(ParserRuleContext * /*ctx*/) {
 }

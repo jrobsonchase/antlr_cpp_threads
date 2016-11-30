@@ -38,7 +38,7 @@ namespace atn {
 
   class ANTLR4CPP_PUBLIC ATNDeserializationOptions {
   private:
-    static ATNDeserializationOptions defaultOptions;
+    static thread_local ATNDeserializationOptions defaultOptions;
 
     bool readOnly;
     bool verifyATN;
