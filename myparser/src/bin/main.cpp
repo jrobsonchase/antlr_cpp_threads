@@ -16,7 +16,7 @@ void thread_main(const char * fileName) {
     buf << inputFile.rdbuf();
     string inputString = buf.str();
 
-    while(true) {
+    for(int i = 0; i < 50; ++i) {
 //         PARSE_MUTEX.lock();
         run_parser(inputString.c_str());
 //         PARSE_MUTEX.unlock();

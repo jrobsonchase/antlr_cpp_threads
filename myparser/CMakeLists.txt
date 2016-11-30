@@ -6,10 +6,10 @@ cmake_minimum_required (VERSION 2.8)
 
 # Detect build type, fallback to release and throw a warning if use didn't specify any
 if(NOT CMAKE_BUILD_TYPE)
-  message(WARNING "Build type not set, falling back to Release mode.
+  message(WARNING "Build type not set, falling back to Debug mode.
  To specify build type use:
  -DCMAKE_BUILD_TYPE=<mode> where <mode> is Debug or Release.")
-  set(CMAKE_BUILD_TYPE "Release" CACHE STRING
+  set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
        "Choose the type of build, options are: Debug Release."
        FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
@@ -38,11 +38,11 @@ else()
   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -std=c++11")
 endif()
 
-set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS} -Wall ${MY_CXX_WARNING_FLAGS}")
-set(CMAKE_CXX_FLAGS_DEBUG          "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g ${MY_CXX_WARNING_FLAGS}")
-set(CMAKE_CXX_FLAGS_MINSIZEREL     "${CMAKE_CXX_FLAGS_MINSIZEREL} -Os -DNDEBUG ${MY_CXX_WARNING_FLAGS}")
-set(CMAKE_CXX_FLAGS_RELEASE        "${CMAKE_CXX_FLAGS_RELEASE} -O3 -DNDEBUG ${MY_CXX_WARNING_FLGAS}")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O2 -g ${MY_CXX_WARNING_FLAGS}")
+set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS} -fPIC -Wall ${MY_CXX_WARNING_FLAGS}")
+set(CMAKE_CXX_FLAGS_DEBUG          "${CMAKE_CXX_FLAGS_DEBUG} -fPIC -O0 -g ${MY_CXX_WARNING_FLAGS}")
+set(CMAKE_CXX_FLAGS_MINSIZEREL     "${CMAKE_CXX_FLAGS_MINSIZEREL} -fPIC -Os -DNDEBUG ${MY_CXX_WARNING_FLAGS}")
+set(CMAKE_CXX_FLAGS_RELEASE        "${CMAKE_CXX_FLAGS_RELEASE} -fPIC -O3 -DNDEBUG ${MY_CXX_WARNING_FLGAS}")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -fPIC -O2 -g ${MY_CXX_WARNING_FLAGS}")
 
 # Compiler-specific C++11 activation.
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
@@ -68,15 +68,14 @@ else ()
     message(FATAL_ERROR "Your C++ compiler does not support C++11.")
 endif ()
 
-
 set(grammar-SOURCE_DIR
 	${PROJECT_SOURCE_DIR}/grammar
 	)
 
 set(antlr4-BASE_DIR
-  ${PROJECT_SOURCE_DIR}/../antlr4-runtime
+  ${PROJECT_SOURCE_DIR}/antlr4-runtime
   )
-  
+
 set(antlr4-SOURCE_DIR
   ${antlr4-BASE_DIR}/runtime/src
   )
@@ -114,7 +113,6 @@ foreach(lang ${myparser-GRAMMARS})
     )
 
   list(APPEND myparser_GENERATED_SRC ${output})
-
 
   add_custom_command(
     OUTPUT
@@ -163,28 +161,24 @@ foreach( src_file ${myparser_SRC} )
           )
 endforeach( src_file ${myparser_SRC} )
 
-add_library(myparser STATIC ${myparser_SRC})
+add_subdirectory(${antlr4-BASE_DIR}
+                 ${CMAKE_CURRENT_BINARY_DIR}/runtime
+                 EXCLUDE_FROM_ALL)
 
-option(BUILD_BINARY "Build CLI runner" False)
+add_library(myparser STATIC ${myparser_SRC})
+target_link_libraries(myparser antlr4_static)
+
+option(BUILD_BINARY "Build CLI runner" True)
 
 if(BUILD_BINARY)
-    add_custom_target(BuildRuntime
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${antlr4-BASE_DIR}/build
-        COMMAND ${CMAKE_COMMAND} -E chdir build ${CMAKE_COMMAND} ..
-        COMMAND ${CMAKE_COMMAND} -E chdir build ${CMAKE_COMMAND} --build .
-        WORKING_DIRECTORY ${antlr4-BASE_DIR}
-    )
-    
     add_executable(run_parser
         ${PROJECT_SOURCE_DIR}/src/bin/main.cpp
     )
-    
+
     foreach( target run_parser )
-        add_dependencies(${target} BuildRuntime)
         target_link_libraries(${target} myparser)
-        target_link_libraries(${target} ${antlr4-BASE_DIR}/dist/libantlr4-runtime.a)
     endforeach( target run_parser )
-    
+
     find_package(Threads)
     target_link_libraries(run_parser ${CMAKE_THREAD_LIBS_INIT})
 endif()
