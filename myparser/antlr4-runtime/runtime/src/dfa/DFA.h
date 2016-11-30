@@ -43,7 +43,7 @@ namespace dfa {
 
     /// From which ATN state did we create this DFA?
     atn::DecisionState *const atnStartState;
-    std::unordered_set<DFAState *, DFAState::Hasher, DFAState::Comparer> states; // States are owned by this class.
+    SyncSet<DFAState *, DFAState::Hasher, DFAState::Comparer> states; // States are owned by this class.
     DFAState *s0;
     const size_t decision;
 
@@ -100,7 +100,7 @@ namespace dfa {
     std::string toString(const Vocabulary &vocabulary) const;
 
     virtual std::string toLexerString();
-
+    
   private:
     /**
      * {@code true} if this DFA is for a precedence decision; otherwise,
@@ -108,6 +108,7 @@ namespace dfa {
      */
     bool _precedenceDfa;
     DFAState *_s0Shadow = nullptr; // ml: assigned when we created s0 ourselves.
+    
   };
 
 } // namespace atn

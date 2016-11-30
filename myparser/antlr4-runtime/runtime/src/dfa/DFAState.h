@@ -162,8 +162,11 @@ namespace dfa {
       }
     };
     
+    std::recursive_mutex & getMutex();
+    
   private:
     void InitializeInstanceFields();
+    std::recursive_mutex _mutex;
   };
 
 } // namespace atn

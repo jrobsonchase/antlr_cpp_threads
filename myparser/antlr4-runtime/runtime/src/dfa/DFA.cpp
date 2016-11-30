@@ -107,7 +107,7 @@ void DFA::setPrecedenceStartState(int precedence, DFAState *startState, std::rec
   }
 
   {
-    std::unique_lock<std::recursive_mutex> lock(mutex);
+    std::unique_lock<std::recursive_mutex> lock(s0->getMutex());
     s0->edges[precedence] = startState;
   }
 }
@@ -150,4 +150,3 @@ std::string DFA::toLexerString() {
 
   return serializer.toString();
 }
-

@@ -645,3 +645,7 @@ std::vector<std::string> PredictionContext::toStrings(Recognizer *recognizer, co
 
   return result;
 }
+
+std::recursive_mutex & PredictionContext::getMutex() {
+    return _mutex;
+}

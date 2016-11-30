@@ -88,7 +88,6 @@ void ParserATNSimulator::clearDFA() {
 }
 
 size_t ParserATNSimulator::adaptivePredict(TokenStream *input, size_t decision, ParserRuleContext *outerContext) {
-  
 #if DEBUG_ATN == 1 || DEBUG_LIST_ATN_DECISIONS == 1
     std::cout << "adaptivePredict decision " << decision << " exec LA(1)==" << getLookaheadName(input) << " line "
       << input->LT(1)->getLine() << ":" << input->LT(1)->getCharPositionInLine() << std::endl;
@@ -1176,13 +1175,13 @@ dfa::DFAState *ParserATNSimulator::addDFAEdge(dfa::DFA &dfa, dfa::DFAState *from
     return nullptr;
   }
 
-  to = addDFAState(dfa, to); // used existing if possible not incoming
-  if (from == nullptr || t > (int)atn.maxTokenType) {
-    return to;
-  }
-
   {
-    std::lock_guard<std::recursive_mutex> lck(_mutex);
+    std::lock_guard<std::recursive_mutex> lck(from->getMutex());
+    to = addDFAState(dfa, to); // used existing if possible not incoming
+    if (from == nullptr || t > (int)atn.maxTokenType) {
+      return to;
+    }
+
     from->edges[t] = to; // connect
   }
 
@@ -1205,7 +1204,7 @@ dfa::DFAState *ParserATNSimulator::addDFAState(dfa::DFA &dfa, dfa::DFAState *D) 
   }
 
   {
-    std::lock_guard<std::recursive_mutex> lck(_mutex);
+    std::lock_guard<std::recursive_mutex> lck(dfa.states.getMutex());
 
     auto existing = dfa.states.find(D);
     if (existing != dfa.states.end()) {

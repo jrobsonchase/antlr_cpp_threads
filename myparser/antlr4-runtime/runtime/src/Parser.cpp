@@ -56,7 +56,7 @@ using namespace antlr4::atn;
 
 using namespace antlrcpp;
 
-std::map<std::vector<uint16_t>, atn::ATN> Parser::bypassAltsAtnCache;
+SyncMap<std::vector<uint16_t>, atn::ATN> Parser::bypassAltsAtnCache;
 
 Parser::TraceListener::TraceListener(Parser *outerInstance) : outerInstance(outerInstance) {
 }
@@ -238,7 +238,7 @@ const atn::ATN& Parser::getATNWithBypassAlts() {
     throw UnsupportedOperationException("The current parser does not support an ATN with bypass alternatives.");
   }
 
-  std::lock_guard<std::recursive_mutex> lck(_mutex);
+  std::lock_guard<std::recursive_mutex> lck(bypassAltsAtnCache);
 
   // XXX: using the entire serialized ATN as key into the map is a big resource waste.
   //      How large can that thing become?

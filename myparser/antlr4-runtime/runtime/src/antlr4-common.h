@@ -117,6 +117,8 @@
 #endif
 
 #include "support/guid.h"
+#include "support/SyncMap.h"
+#include "support/SyncSet.h"
 #include "support/Declarations.h"
 
 #if !defined(HAS_NOEXCEPT)

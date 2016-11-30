@@ -121,3 +121,7 @@ void DFAState::InitializeInstanceFields() {
   prediction = 0;
   requiresFullContext = false;
 }
+
+std::recursive_mutex & DFAState::getMutex() {
+    return _mutex;
+}

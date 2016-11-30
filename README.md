@@ -12,5 +12,5 @@ Includes:
 
 - run the resulting `run_parser` binary and watch the fireworks.
 
-- Uncomment the mutex lock/unlock on lines 20 and 22 of
+- Uncomment the lock guard on line 21 or the "warmup" on line 39 of
   `myparser/src/bin/main.cpp`. Repeat step 2. It should exit successfully.

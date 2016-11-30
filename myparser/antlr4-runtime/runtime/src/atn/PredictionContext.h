@@ -60,6 +60,8 @@ namespace atn {
 
   private:
     static const size_t INITIAL_HASH = 1;
+    
+    std::recursive_mutex _mutex;
 
   public:
     static size_t globalNodeCount;
@@ -87,6 +89,8 @@ namespace atn {
     /// </pre>
     /// </summary>
     const size_t cachedHashCode;
+    
+    std::recursive_mutex & getMutex();
 
   protected:
     PredictionContext(size_t cachedHashCode);

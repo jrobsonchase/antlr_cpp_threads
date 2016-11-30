@@ -73,7 +73,7 @@ set(grammar-SOURCE_DIR
 	)
 
 set(antlr4-BASE_DIR
-  ${PROJECT_SOURCE_DIR}/antlr4-runtime
+	${PROJECT_SOURCE_DIR}/antlr4-runtime
   )
 
 set(antlr4-SOURCE_DIR

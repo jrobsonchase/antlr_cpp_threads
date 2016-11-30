@@ -5,6 +5,10 @@
 #include <string>
 #include <sstream>
 #include <mutex>
+#include <map>
+
+template <typename K, typename V>
+class LockMap : public std::recursive_mutex, public std::map<K, V> {};
 
 using namespace std;
 
@@ -17,9 +21,9 @@ void thread_main(const char * fileName) {
     string inputString = buf.str();
 
     for(int i = 0; i < 50; ++i) {
-//         PARSE_MUTEX.lock();
+        // uncommenting this will fix the problem
+        // lock_guard<mutex> lck(PARSE_MUTEX);
         run_parser(inputString.c_str());
-//         PARSE_MUTEX.unlock();
     }
 }
 
@@ -28,14 +32,24 @@ int main(int argc, char** argv) {
         cout << "Need input file. Provide a path to MyGrammar.g4." << endl;
         return -1;
     }
-    
+
+    ifstream inputFile(argv[1]);
+    stringstream buf;
+    buf << inputFile.rdbuf();
+    string inputString = buf.str();
+
+    // Running this first will also make the problem go away,
+    // but only for the same input.
+    // run_parser(inputString.c_str());
+
     thread one(thread_main, argv[1]);
     thread two(thread_main, argv[1]);
     thread three(thread_main, argv[1]);
     thread four(thread_main, argv[1]);
-    
+
     one.join();
     two.join();
     three.join();
     four.join();
 }
+
