@@ -16,6 +16,8 @@ extern "C" {
             CommonTokenStream tokens(&lexer);
             MyGrammarParser parser(&tokens);
 
+            parser.setErrorHandler(std::make_shared<BailErrorStrategy>());
+
             ParseTree * tree = parser.root();
             ParseTreeWalker walker;
             MyGrammarBaseListener listener;
