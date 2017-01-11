@@ -1,5 +1,5 @@
 
-// Generated from /home/jchase/src/github.com/Pursuit92/antlr_rust_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.5.3
+// Generated from /tmp/antlr_cpp_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.6
 
 #pragma once
 
@@ -15,7 +15,7 @@ namespace myparser {
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-class MyGrammarBaseListener : public MyGrammarListener {
+class  MyGrammarBaseListener : public MyGrammarListener {
 public:
 
   virtual void enterRule_binding(MyGrammarParser::Rule_bindingContext * /*ctx*/) override { }
@@ -79,10 +79,10 @@ public:
   virtual void exitComment_block(MyGrammarParser::Comment_blockContext * /*ctx*/) override { }
 
 
-  virtual void enterEveryRule(ParserRuleContext * /*ctx*/) override { }
-  virtual void exitEveryRule(ParserRuleContext * /*ctx*/) override { }
-  virtual void visitTerminal(tree::TerminalNode * /*node*/) override { }
-  virtual void visitErrorNode(tree::ErrorNode * /*node*/) override { }
+  virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
+  virtual void exitEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
+  virtual void visitTerminal(antlr4::tree::TerminalNode * /*node*/) override { }
+  virtual void visitErrorNode(antlr4::tree::ErrorNode * /*node*/) override { }
 
 };
 

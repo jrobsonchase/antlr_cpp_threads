@@ -1,5 +1,5 @@
 
-// Generated from /home/jchase/src/github.com/Pursuit92/antlr_rust_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.5.3
+// Generated from /tmp/antlr_cpp_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.6
 
 
 #include "MyGrammarListener.h"
@@ -82,8 +82,8 @@ void MyGrammarParser::Rule_bindingContext::exitRule(tree::ParseTreeListener *lis
 
 
 antlrcpp::Any MyGrammarParser::Rule_bindingContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_binding(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_binding(this);
   else
     return visitor->visitChildren(this);
 }
@@ -99,6 +99,7 @@ MyGrammarParser::Rule_bindingContext* MyGrammarParser::rule_binding() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(29);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MyGrammarParser::FRAGMENT) {
@@ -110,6 +111,7 @@ MyGrammarParser::Rule_bindingContext* MyGrammarParser::rule_binding() {
     setState(32);
     match(MyGrammarParser::COLON);
     setState(34);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
@@ -127,6 +129,7 @@ MyGrammarParser::Rule_bindingContext* MyGrammarParser::rule_binding() {
       rule_def();
     }
     setState(37);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MyGrammarParser::ARROW) {
@@ -195,8 +198,8 @@ void MyGrammarParser::RedirectContext::exitRule(tree::ParseTreeListener *listene
 
 
 antlrcpp::Any MyGrammarParser::RedirectContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRedirect(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRedirect(this);
   else
     return visitor->visitChildren(this);
 }
@@ -288,8 +291,8 @@ void MyGrammarParser::Rule_defContext::exitRule(tree::ParseTreeListener *listene
 
 
 antlrcpp::Any MyGrammarParser::Rule_defContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_def(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_def(this);
   else
     return visitor->visitChildren(this);
 }
@@ -366,8 +369,8 @@ void MyGrammarParser::Rule_altContext::exitRule(tree::ParseTreeListener *listene
 
 
 antlrcpp::Any MyGrammarParser::Rule_altContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_alt(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_alt(this);
   else
     return visitor->visitChildren(this);
 }
@@ -383,6 +386,7 @@ MyGrammarParser::Rule_altContext* MyGrammarParser::rule_alt() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(60);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MyGrammarParser::PIPE
@@ -439,8 +443,8 @@ void MyGrammarParser::Empty_altContext::exitRule(tree::ParseTreeListener *listen
 
 
 antlrcpp::Any MyGrammarParser::Empty_altContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitEmpty_alt(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitEmpty_alt(this);
   else
     return visitor->visitChildren(this);
 }
@@ -458,6 +462,7 @@ MyGrammarParser::Empty_altContext* MyGrammarParser::empty_alt() {
     setState(64);
     empty_rule();
     setState(66);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MyGrammarParser::POUND) {
@@ -512,8 +517,8 @@ void MyGrammarParser::Nonempty_altContext::exitRule(tree::ParseTreeListener *lis
 
 
 antlrcpp::Any MyGrammarParser::Nonempty_altContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitNonempty_alt(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitNonempty_alt(this);
   else
     return visitor->visitChildren(this);
 }
@@ -547,6 +552,7 @@ MyGrammarParser::Nonempty_altContext* MyGrammarParser::nonempty_alt() {
       | (1ULL << MyGrammarParser::STRING)
       | (1ULL << MyGrammarParser::SET_TOK))) != 0));
     setState(74);
+    _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MyGrammarParser::POUND) {
@@ -597,8 +603,8 @@ void MyGrammarParser::IdentContext::exitRule(tree::ParseTreeListener *listener) 
 
 
 antlrcpp::Any MyGrammarParser::IdentContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitIdent(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitIdent(this);
   else
     return visitor->visitChildren(this);
 }
@@ -619,7 +625,9 @@ MyGrammarParser::IdentContext* MyGrammarParser::ident() {
 
     || _la == MyGrammarParser::RULE_IDENT)) {
     _errHandler->recoverInline(this);
-    } else {
+    }
+    else {
+      _errHandler->reportMatch(this);
       consume();
     }
    
@@ -668,8 +676,8 @@ void MyGrammarParser::Rule_dotContext::exitRule(tree::ParseTreeListener *listene
 }
 
 antlrcpp::Any MyGrammarParser::Rule_dotContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_dot(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_dot(this);
   else
     return visitor->visitChildren(this);
 }
@@ -693,8 +701,8 @@ void MyGrammarParser::Rule_stringContext::exitRule(tree::ParseTreeListener *list
 }
 
 antlrcpp::Any MyGrammarParser::Rule_stringContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_string(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_string(this);
   else
     return visitor->visitChildren(this);
 }
@@ -718,8 +726,8 @@ void MyGrammarParser::Rule_setContext::exitRule(tree::ParseTreeListener *listene
 }
 
 antlrcpp::Any MyGrammarParser::Rule_setContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_set(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_set(this);
   else
     return visitor->visitChildren(this);
 }
@@ -751,8 +759,8 @@ void MyGrammarParser::Rule_subContext::exitRule(tree::ParseTreeListener *listene
 }
 
 antlrcpp::Any MyGrammarParser::Rule_subContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_sub(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_sub(this);
   else
     return visitor->visitChildren(this);
 }
@@ -792,8 +800,8 @@ void MyGrammarParser::Rule_punctContext::exitRule(tree::ParseTreeListener *liste
 }
 
 antlrcpp::Any MyGrammarParser::Rule_punctContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_punct(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_punct(this);
   else
     return visitor->visitChildren(this);
 }
@@ -817,8 +825,8 @@ void MyGrammarParser::Rule_commentContext::exitRule(tree::ParseTreeListener *lis
 }
 
 antlrcpp::Any MyGrammarParser::Rule_commentContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_comment(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_comment(this);
   else
     return visitor->visitChildren(this);
 }
@@ -842,8 +850,8 @@ void MyGrammarParser::Rule_identContext::exitRule(tree::ParseTreeListener *liste
 }
 
 antlrcpp::Any MyGrammarParser::Rule_identContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRule_ident(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRule_ident(this);
   else
     return visitor->visitChildren(this);
 }
@@ -967,7 +975,9 @@ MyGrammarParser::Rule_itemContext* MyGrammarParser::rule_item(int precedence) {
           | (1ULL << MyGrammarParser::PLUS)
           | (1ULL << MyGrammarParser::QMARK))) != 0))) {
         _errHandler->recoverInline(this);
-        } else {
+        }
+        else {
+          _errHandler->reportMatch(this);
           consume();
         } 
       }
@@ -1017,8 +1027,8 @@ void MyGrammarParser::Alt_labelContext::exitRule(tree::ParseTreeListener *listen
 
 
 antlrcpp::Any MyGrammarParser::Alt_labelContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitAlt_label(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitAlt_label(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1084,8 +1094,8 @@ void MyGrammarParser::HeaderContext::exitRule(tree::ParseTreeListener *listener)
 
 
 antlrcpp::Any MyGrammarParser::HeaderContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitHeader(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitHeader(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1161,8 +1171,8 @@ void MyGrammarParser::RootContext::exitRule(tree::ParseTreeListener *listener) {
 
 
 antlrcpp::Any MyGrammarParser::RootContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitRoot(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitRoot(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1247,8 +1257,8 @@ void MyGrammarParser::Empty_ruleContext::exitRule(tree::ParseTreeListener *liste
 
 
 antlrcpp::Any MyGrammarParser::Empty_ruleContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitEmpty_rule(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitEmpty_rule(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1317,8 +1327,8 @@ void MyGrammarParser::CommentContext::exitRule(tree::ParseTreeListener *listener
 
 
 antlrcpp::Any MyGrammarParser::CommentContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitComment(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitComment(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1374,8 +1384,8 @@ void MyGrammarParser::Comment_blockContext::exitRule(tree::ParseTreeListener *li
 
 
 antlrcpp::Any MyGrammarParser::Comment_blockContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (dynamic_cast<MyGrammarVisitor*>(visitor) != nullptr)
-    return ((MyGrammarVisitor *)visitor)->visitComment_block(this);
+  if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
+    return parserVisitor->visitComment_block(this);
   else
     return visitor->visitChildren(this);
 }

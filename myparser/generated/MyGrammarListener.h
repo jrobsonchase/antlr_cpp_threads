@@ -1,5 +1,5 @@
 
-// Generated from /home/jchase/src/github.com/Pursuit92/antlr_rust_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.5.3
+// Generated from /tmp/antlr_cpp_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.6
 
 #pragma once
 
@@ -13,7 +13,7 @@ namespace myparser {
 /**
  * This interface defines an abstract listener for a parse tree produced by MyGrammarParser.
  */
-class MyGrammarListener : public antlr4::tree::ParseTreeListener {
+class  MyGrammarListener : public antlr4::tree::ParseTreeListener {
 public:
 
   virtual void enterRule_binding(MyGrammarParser::Rule_bindingContext *ctx) = 0;

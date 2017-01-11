@@ -1,5 +1,5 @@
 
-// Generated from /home/jchase/src/github.com/Pursuit92/antlr_rust_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.5.3
+// Generated from /tmp/antlr_cpp_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.6
 
 #pragma once
 
@@ -14,7 +14,7 @@ namespace myparser {
  * This class provides an empty implementation of MyGrammarVisitor, which can be
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
-class MyGrammarBaseVisitor : public MyGrammarVisitor {
+class  MyGrammarBaseVisitor : public MyGrammarVisitor {
 public:
 
   virtual antlrcpp::Any visitRule_binding(MyGrammarParser::Rule_bindingContext *ctx) override {

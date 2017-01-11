@@ -1,5 +1,5 @@
 
-// Generated from /home/jchase/src/github.com/Pursuit92/antlr_rust_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.5.3
+// Generated from /tmp/antlr_cpp_threads/myparser/grammar/MyGrammar.g4 by ANTLR 4.6
 
 #pragma once
 
@@ -7,12 +7,10 @@
 #include "antlr4-runtime.h"
 
 
-using namespace antlr4;
-
 namespace myparser {
 
 
-class MyGrammarParser : public Parser {
+class  MyGrammarParser : public antlr4::Parser {
 public:
   enum {
     COMMENT = 1, COMMENT_BLOCK = 2, WHITESPACE = 3, FRAGMENT = 4, GRAMMAR = 5, 
@@ -30,14 +28,14 @@ public:
     RuleComment = 12, RuleComment_block = 13
   };
 
-  MyGrammarParser(TokenStream *input);
+  MyGrammarParser(antlr4::TokenStream *input);
   ~MyGrammarParser();
 
   virtual std::string getGrammarFileName() const override;
-  virtual const atn::ATN& getATN() const override { return _atn; };
+  virtual const antlr4::atn::ATN& getATN() const override { return _atn; };
   virtual const std::vector<std::string>& getTokenNames() const override { return _tokenNames; }; // deprecated: use vocabulary instead.
   virtual const std::vector<std::string>& getRuleNames() const override;
-  virtual dfa::Vocabulary& getVocabulary() const override;
+  virtual antlr4::dfa::Vocabulary& getVocabulary() const override;
 
 
   class Rule_bindingContext;
@@ -55,264 +53,264 @@ public:
   class CommentContext;
   class Comment_blockContext; 
 
-  class Rule_bindingContext : public ParserRuleContext {
+  class  Rule_bindingContext : public antlr4::ParserRuleContext {
   public:
-    Rule_bindingContext(ParserRuleContext *parent, size_t invokingState);
+    Rule_bindingContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     IdentContext *ident();
-    tree::TerminalNode *COLON();
-    tree::TerminalNode *SEMI();
-    tree::TerminalNode *FRAGMENT();
+    antlr4::tree::TerminalNode *COLON();
+    antlr4::tree::TerminalNode *SEMI();
+    antlr4::tree::TerminalNode *FRAGMENT();
     Rule_defContext *rule_def();
     RedirectContext *redirect();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Rule_bindingContext* rule_binding();
 
-  class RedirectContext : public ParserRuleContext {
+  class  RedirectContext : public antlr4::ParserRuleContext {
   public:
-    RedirectContext(ParserRuleContext *parent, size_t invokingState);
+    RedirectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *ARROW();
-    tree::TerminalNode *CHANNEL();
-    tree::TerminalNode *LPAREN();
-    tree::TerminalNode *TOKEN_IDENT();
-    tree::TerminalNode *RPAREN();
-    tree::TerminalNode *SKIP_TOK();
+    antlr4::tree::TerminalNode *ARROW();
+    antlr4::tree::TerminalNode *CHANNEL();
+    antlr4::tree::TerminalNode *LPAREN();
+    antlr4::tree::TerminalNode *TOKEN_IDENT();
+    antlr4::tree::TerminalNode *RPAREN();
+    antlr4::tree::TerminalNode *SKIP_TOK();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   RedirectContext* redirect();
 
-  class Rule_defContext : public ParserRuleContext {
+  class  Rule_defContext : public antlr4::ParserRuleContext {
   public:
-    Rule_defContext(ParserRuleContext *parent, size_t invokingState);
+    Rule_defContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<Rule_altContext *> rule_alt();
     Rule_altContext* rule_alt(size_t i);
-    std::vector<tree::TerminalNode *> PIPE();
-    tree::TerminalNode* PIPE(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> PIPE();
+    antlr4::tree::TerminalNode* PIPE(size_t i);
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Rule_defContext* rule_def();
 
-  class Rule_altContext : public ParserRuleContext {
+  class  Rule_altContext : public antlr4::ParserRuleContext {
   public:
-    Rule_altContext(ParserRuleContext *parent, size_t invokingState);
+    Rule_altContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Nonempty_altContext *nonempty_alt();
     Empty_altContext *empty_alt();
-    tree::TerminalNode *PIPE();
+    antlr4::tree::TerminalNode *PIPE();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Rule_altContext* rule_alt();
 
-  class Empty_altContext : public ParserRuleContext {
+  class  Empty_altContext : public antlr4::ParserRuleContext {
   public:
-    Empty_altContext(ParserRuleContext *parent, size_t invokingState);
+    Empty_altContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Empty_ruleContext *empty_rule();
     Alt_labelContext *alt_label();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Empty_altContext* empty_alt();
 
-  class Nonempty_altContext : public ParserRuleContext {
+  class  Nonempty_altContext : public antlr4::ParserRuleContext {
   public:
-    Nonempty_altContext(ParserRuleContext *parent, size_t invokingState);
+    Nonempty_altContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<Rule_itemContext *> rule_item();
     Rule_itemContext* rule_item(size_t i);
     Alt_labelContext *alt_label();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Nonempty_altContext* nonempty_alt();
 
-  class IdentContext : public ParserRuleContext {
+  class  IdentContext : public antlr4::ParserRuleContext {
   public:
-    IdentContext(ParserRuleContext *parent, size_t invokingState);
+    IdentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *TOKEN_IDENT();
-    tree::TerminalNode *RULE_IDENT();
+    antlr4::tree::TerminalNode *TOKEN_IDENT();
+    antlr4::tree::TerminalNode *RULE_IDENT();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   IdentContext* ident();
 
-  class Rule_itemContext : public ParserRuleContext {
+  class  Rule_itemContext : public antlr4::ParserRuleContext {
   public:
-    Rule_itemContext(ParserRuleContext *parent, size_t invokingState);
+    Rule_itemContext(antlr4::ParserRuleContext *parent, size_t invokingState);
    
-    Rule_itemContext() : ParserRuleContext() { }
+    Rule_itemContext() : antlr4::ParserRuleContext() { }
     void copyFrom(Rule_itemContext *context);
-    using ParserRuleContext::copyFrom;
+    using antlr4::ParserRuleContext::copyFrom;
 
     virtual size_t getRuleIndex() const override;
 
    
   };
 
-  class Rule_dotContext : public Rule_itemContext {
+  class  Rule_dotContext : public Rule_itemContext {
   public:
     Rule_dotContext(Rule_itemContext *ctx);
 
-    tree::TerminalNode *DOT();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    antlr4::tree::TerminalNode *DOT();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_stringContext : public Rule_itemContext {
+  class  Rule_stringContext : public Rule_itemContext {
   public:
     Rule_stringContext(Rule_itemContext *ctx);
 
-    tree::TerminalNode *STRING();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    antlr4::tree::TerminalNode *STRING();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_setContext : public Rule_itemContext {
+  class  Rule_setContext : public Rule_itemContext {
   public:
     Rule_setContext(Rule_itemContext *ctx);
 
-    tree::TerminalNode *SET_TOK();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    antlr4::tree::TerminalNode *SET_TOK();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_subContext : public Rule_itemContext {
+  class  Rule_subContext : public Rule_itemContext {
   public:
     Rule_subContext(Rule_itemContext *ctx);
 
-    tree::TerminalNode *LPAREN();
+    antlr4::tree::TerminalNode *LPAREN();
     Rule_defContext *rule_def();
-    tree::TerminalNode *RPAREN();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    antlr4::tree::TerminalNode *RPAREN();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_punctContext : public Rule_itemContext {
+  class  Rule_punctContext : public Rule_itemContext {
   public:
     Rule_punctContext(Rule_itemContext *ctx);
 
-    tree::TerminalNode *TILDE();
+    antlr4::tree::TerminalNode *TILDE();
     Rule_itemContext *rule_item();
-    tree::TerminalNode *PLUS();
-    tree::TerminalNode *STAR();
-    tree::TerminalNode *QMARK();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    antlr4::tree::TerminalNode *PLUS();
+    antlr4::tree::TerminalNode *STAR();
+    antlr4::tree::TerminalNode *QMARK();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_commentContext : public Rule_itemContext {
+  class  Rule_commentContext : public Rule_itemContext {
   public:
     Rule_commentContext(Rule_itemContext *ctx);
 
     Comment_blockContext *comment_block();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class Rule_identContext : public Rule_itemContext {
+  class  Rule_identContext : public Rule_itemContext {
   public:
     Rule_identContext(Rule_itemContext *ctx);
 
     IdentContext *ident();
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
   Rule_itemContext* rule_item();
   Rule_itemContext* rule_item(int precedence);
-  class Alt_labelContext : public ParserRuleContext {
+  class  Alt_labelContext : public antlr4::ParserRuleContext {
   public:
-    Alt_labelContext(ParserRuleContext *parent, size_t invokingState);
+    Alt_labelContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *POUND();
+    antlr4::tree::TerminalNode *POUND();
     IdentContext *ident();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Alt_labelContext* alt_label();
 
-  class HeaderContext : public ParserRuleContext {
+  class  HeaderContext : public antlr4::ParserRuleContext {
   public:
-    HeaderContext(ParserRuleContext *parent, size_t invokingState);
+    HeaderContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *GRAMMAR();
+    antlr4::tree::TerminalNode *GRAMMAR();
     IdentContext *ident();
-    tree::TerminalNode *SEMI();
+    antlr4::tree::TerminalNode *SEMI();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   HeaderContext* header();
 
-  class RootContext : public ParserRuleContext {
+  class  RootContext : public antlr4::ParserRuleContext {
   public:
-    RootContext(ParserRuleContext *parent, size_t invokingState);
+    RootContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     HeaderContext *header();
     std::vector<CommentContext *> comment();
@@ -320,73 +318,73 @@ public:
     std::vector<Rule_bindingContext *> rule_binding();
     Rule_bindingContext* rule_binding(size_t i);
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   RootContext* root();
 
-  class Empty_ruleContext : public ParserRuleContext {
+  class  Empty_ruleContext : public antlr4::ParserRuleContext {
   public:
-    Empty_ruleContext(ParserRuleContext *parent, size_t invokingState);
+    Empty_ruleContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Empty_ruleContext* empty_rule();
 
-  class CommentContext : public ParserRuleContext {
+  class  CommentContext : public antlr4::ParserRuleContext {
   public:
-    CommentContext(ParserRuleContext *parent, size_t invokingState);
+    CommentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *COMMENT();
+    antlr4::tree::TerminalNode *COMMENT();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   CommentContext* comment();
 
-  class Comment_blockContext : public ParserRuleContext {
+  class  Comment_blockContext : public antlr4::ParserRuleContext {
   public:
-    Comment_blockContext(ParserRuleContext *parent, size_t invokingState);
+    Comment_blockContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    tree::TerminalNode *COMMENT_BLOCK();
+    antlr4::tree::TerminalNode *COMMENT_BLOCK();
 
-    virtual void enterRule(tree::ParseTreeListener *listener) override;
-    virtual void exitRule(tree::ParseTreeListener *listener) override;
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
-    virtual antlrcpp::Any accept(tree::ParseTreeVisitor *visitor) override;
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   Comment_blockContext* comment_block();
 
 
-  virtual bool sempred(RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
+  virtual bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
   bool rule_itemSempred(Rule_itemContext *_localctx, size_t predicateIndex);
 
 private:
-  static std::vector<dfa::DFA> _decisionToDFA;
-  static atn::PredictionContextCache _sharedContextCache;
+  static std::vector<antlr4::dfa::DFA> _decisionToDFA;
+  static antlr4::atn::PredictionContextCache _sharedContextCache;
   static std::vector<std::string> _ruleNames;
   static std::vector<std::string> _tokenNames;
 
   static std::vector<std::string> _literalNames;
   static std::vector<std::string> _symbolicNames;
-  static dfa::Vocabulary _vocabulary;
-  static atn::ATN _atn;
+  static antlr4::dfa::Vocabulary _vocabulary;
+  static antlr4::atn::ATN _atn;
   static std::vector<uint16_t> _serializedATN;
 
 

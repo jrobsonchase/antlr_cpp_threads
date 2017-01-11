@@ -14,7 +14,7 @@ fragment UPPER: [A-Z];
 fragment UNDERSCORE: '_';
 fragment LETTER: UPPER | LOWER;
 fragment DIGIT: [0-9];
-fragment SPECIAL: [ `~!@#$%^&*\-_=+<>,.()[\]{};:'"\|\\];
+fragment SPECIAL: [ `~!@#$%^&*_=+<>,.()[\]{};:'"|\\-];
 fragment CHAR: LETTER | DIGIT | SPECIAL;
 
 // literals
