@@ -1,4 +1,8 @@
-#include "extern.h"
+#include "antlr4-runtime.h"
+#include "LuaBaseListener.h"
+#include "LuaLexer.h"
+#include "LuaParser.h"
+
 #include <thread>
 #include <iostream>
 #include <fstream>
@@ -8,7 +12,31 @@
 
 using namespace std;
 
+using namespace myparser;
+using namespace antlr4;
+using namespace antlr4::tree;
+
 mutex PARSE_MUTEX;
+
+uint8_t run_parser(const char * input) {
+  try {
+    ANTLRInputStream stream(input);
+    LuaLexer lexer(&stream);
+    CommonTokenStream tokens(&lexer);
+    LuaParser parser(&tokens);
+
+    parser.setErrorHandler(std::make_shared<BailErrorStrategy>());
+
+    ParseTree * tree = parser.chunk();
+    ParseTreeWalker walker;
+    LuaBaseListener listener;
+    walker.walk(&listener, tree);
+  } catch (std::exception& e) {
+    return 0;
+  }
+
+  return 1;
+}
 
 void thread_main(const char * fileName) {
     ifstream inputFile(fileName);
@@ -25,7 +53,7 @@ void thread_main(const char * fileName) {
 
 int main(int argc, char** argv) {
     if (argc < 2) {
-        cout << "Need input file. Provide a path to MyGrammar.g4." << endl;
+        cout << "Need input file. Provide a path to LuaInput.lua." << endl;
         return -1;
     }
 

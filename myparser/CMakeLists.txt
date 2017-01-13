@@ -81,7 +81,7 @@ set(antlr4-SOURCE_DIR
   )
 
 set(myparser-GRAMMARS
-  MyGrammar
+	Lua
   )
 
 find_package(Java COMPONENTS Runtime REQUIRED)

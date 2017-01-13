@@ -3,7 +3,7 @@
 Includes:
 
 - Antlr4 Cpp runtime
-- Simple self-parsing grammar
+- Lua grammar and input
 - Executable showing the race
 
 #### How-to
